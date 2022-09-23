@@ -1,10 +1,17 @@
 import React from "react";
-import { SafeAreaView, Text } from "react-native";
+import productsApi from "../../store/features/products/apiSlice";
+
+import * as S from './styles';
+
+import { ProductsList } from '../../components';
 
 export default function Products() {
+  const { data, error, isError, isLoading } = productsApi.useGetProductsQuery();
+
   return (
-    <SafeAreaView style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Products</Text>
-    </SafeAreaView>
+    <S.Container>
+      <S.Title>Produtos</S.Title>
+      <ProductsList data={data || []} />
+    </S.Container>
   )
 }

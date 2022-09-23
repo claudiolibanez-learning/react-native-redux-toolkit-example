@@ -9,6 +9,7 @@ const { Navigator, Screen } = createNativeStackNavigator();
 export function AppStackRoutes() {
   return (
     <Navigator
+      initialRouteName="Products"
       screenOptions={{
         headerShown: false,
       }}

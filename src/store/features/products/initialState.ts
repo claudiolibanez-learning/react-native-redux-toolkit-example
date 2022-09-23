@@ -1,4 +1,4 @@
-import { Product } from "./@types";
+import { Product } from "../../../types";
 
 export const STATUS = {
   IDLE: 'idle',
@@ -6,7 +6,7 @@ export const STATUS = {
   ERROR: 'error'
 }
 
-export default {
+export const initialState = {
   data: [] as Product[],
   status: STATUS.IDLE,
 }

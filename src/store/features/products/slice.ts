@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 import { RootState } from "../../@types";
 
-import initialState from "./initialState";
+import { initialState } from "./initialState";
 import { fetchProductsAsyncBuilder } from "./thunks/fetchProductsAsync";
 
 const productsSlices = createSlice({

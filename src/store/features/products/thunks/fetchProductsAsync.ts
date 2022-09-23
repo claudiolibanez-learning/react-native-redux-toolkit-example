@@ -1,6 +1,6 @@
 import { ActionReducerMapBuilder, createAsyncThunk } from "@reduxjs/toolkit";
 
-import { Product } from "../@types";
+import { Product } from "../../../../types";
 
 import { findAllProducts } from "../../../../services/products";
 
@@ -8,12 +8,15 @@ import { STATUS } from "../initialState";
 
 export const fetchProductsAsync = createAsyncThunk(
   'fetch/products',
-  async () => {
-    const response = await new Promise<{ data: any }>((resolve) =>
-      setTimeout(() => resolve({ data: findAllProducts() }), 5000),
-    )
+  async (_, thunkAPI) => {
 
-    return response.data;
+    try {
+      const data = await findAllProducts();
+
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
   }
 );
 
